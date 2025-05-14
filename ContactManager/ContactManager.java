@@ -1,5 +1,6 @@
 package ContactManager;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -58,7 +59,13 @@ public class ContactManager {
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getId() == id) {
                 Contact removedContact = contacts.remove(i);
+//        Iterator<Contact> iterator = contacts.iterator();
+//		while (iterator.hasNext()) {
+//			if (iterator.next().getId() == id) {
+//				iterator.remove();
+        
                 System.out.println("Contact is  deleted successfully: " + removedContact);
+//				System.out.println("Contact is  deleted successfully");
                 flag = true;
                 break;
             }
@@ -106,100 +113,6 @@ public class ContactManager {
             }
         }
     }
-
-    public void showOperations() {
-        Scanner sc = new Scanner(System.in);
-        
-        while (true) {
-            System.out.println("Operations of Contact Mangement System");
-            System.out.println("1. Add Contact");
-            System.out.println("2. Search by Name");
-            System.out.println("3. Search by Phone Number");
-            System.out.println("4. Delete Contact");
-            System.out.println("5. Update Contact");
-            System.out.println("6. View All Contacts");
-            System.out.println("7. Exit");
-            System.out.print("Enter your choice: ");
-            
-            int choice = sc.nextInt();
-            sc.nextLine(); 
-            
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter name: ");
-                    String name = sc.nextLine();
-                    System.out.print("Enter phone number: ");
-                    String phone = sc.nextLine();
-                    System.out.print("Enter email: ");
-                    String email = sc.nextLine();
-                    addContact(name, phone, email);
-                    break;
-                    
-                case 2:
-                    System.out.print("Enter name to search: ");
-                    String searchName = sc.nextLine();
-                    searchByName(searchName);
-                    break;
-                    
-                case 3:
-                    System.out.print("Enter phone number to search: ");
-                    String searchPhone = sc.nextLine();
-                    searchByNumber(searchPhone);
-                    break;
-                    
-                case 4:
-                    System.out.print("Enter contact ID to delete: ");
-                    int deleteId = sc.nextInt();
-                    sc.nextLine();
-                    deleteById(deleteId);
-                    break;
-                    
-                case 5:
-                    System.out.print("Enter contact ID to update: ");
-                    int updateId = sc.nextInt();
-                    sc.nextLine(); 
-                    System.out.println("Current Contact Details: ");
-           
-                    Contact contactToUpdate = null;
-                    for (Contact contact : contacts) {
-                        if (contact.getId() == updateId) {
-                            contactToUpdate = contact;
-                            break;
-                        }
-                    }
-                    System.out.print(contactToUpdate);
-                    if (contactToUpdate == null) {
-                        System.out.println("No contact found with ID: " + updateId);
-                        break;
-                    }
-                    
-                    System.out.print("Enter new name: ");
-                    String updatedName = sc.nextLine();
-                    System.out.print("Enter new phone number: ");
-                    String updatedPhone = sc.nextLine();
-                    System.out.print("Enter new email: ");
-                    String updatedEmail = sc.nextLine();
-                    
-                    updateContact(updateId, updatedName, updatedPhone, updatedEmail);
-                    break;
-                    
-                case 6:
-                    displayAllContacts();
-                    break;
-                    
-                case 7:
-                    System.out.println("Ending Operations");
-                    sc.close();
-                    return;
-                    
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        ContactManager cmanager = new ContactManager();
-        cmanager.showOperations();
-    }
 }
+
+    
