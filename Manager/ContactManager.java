@@ -1,10 +1,10 @@
-package ContactManager;
+package Manager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import Contact.Contact;
+import Entities.Contact;
 
 public class ContactManager {
     private List<Contact> contacts;

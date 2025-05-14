@@ -1,4 +1,4 @@
-package Contact;
+package Entities;
 
 public class Contact {
 	private int id;

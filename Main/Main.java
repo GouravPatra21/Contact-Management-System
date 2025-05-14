@@ -1,16 +1,15 @@
-package Driver;
+package Main;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import Contact.Contact;
-import ContactManager.ContactManager;
+import Entities.Contact;
+import Manager.ContactManager;
 
 public class Main {
 	public static void main(String[] args) {
         ContactManager manager = new ContactManager();
-        List<Contact> contacts = new ArrayList();;
         Scanner sc = new Scanner(System.in);
         
         while (true) {
@@ -63,34 +62,19 @@ public class Main {
                     break;
                     
                 case 5:
-                	try {
-                    System.out.print("Enter contact ID to update: ");
-                    int updateId = sc.nextInt();
-                    sc.nextLine(); 
-                    System.out.println("Current Contact Details: ");
-                    Contact contactToUpdate = null;
-				    for (Contact contact : contacts) {
-                        if (contact.getId() == updateId) {
-                            contactToUpdate = contact;
-                            break;
-                        }
-                    }
-                    System.out.print(contactToUpdate);
-                    if (contactToUpdate == null) {
-                        System.out.println("No contact found with ID: " + updateId);
-                        break;
-                    }
-                    
-                    System.out.println("Enter new name: ");
-                    String updatedName = sc.nextLine();
-                    System.out.println("Enter new phone number: ");
-                    String updatedPhone = sc.nextLine();
-                    System.out.println("Enter new email: ");
-                    String updatedEmail = sc.nextLine();
-                    
-                    manager.updateContact(updateId, updatedName, updatedPhone, updatedEmail);
+                    try {
+                        System.out.print("Enter contact ID to update: ");
+                        int updateId = sc.nextInt();
+                        sc.nextLine();
+                        System.out.println("Enter new name: ");
+                        String updatedName = sc.nextLine();
+                        System.out.println("Enter new phone number: ");
+                        String updatedPhone = sc.nextLine();
+                        System.out.println("Enter new email: ");
+                        String updatedEmail = sc.nextLine();
+                        manager.updateContact(updateId, updatedName, updatedPhone, updatedEmail);
                     } catch (IllegalArgumentException e) {
-                             System.out.println("Failed to update contact: " + e.getMessage());
+                        System.out.println("Failed to update contact: " + e.getMessage());
                     }
                     break;
                     
